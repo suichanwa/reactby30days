@@ -1,25 +1,82 @@
-import logo from './logo.svg';
+import React from 'react';
+import ReactDom from 'react-dom';
 import './App.css';
 
-function App() {
+const App = () => {
+  class Header extends React.Component{
+    render() {
+      const {
+        name,
+        age,
+      } = this.props.data;
+
+      return (
+        <div>
+          <h1>{name}</h1>
+          <h2>{age}</h2>
+        </div>
+      )
+    }
+  }
+
+
+  class Exp extends React.Component{
+    state = {
+      isLoggingIn: true,
+    }
+
+    render() {
+      const data = {
+        name: 'John',
+        age: '25',
+      }
+
+      let status
+
+      if (this.state.isLoggedIn === true){
+        status = 'Logged In'
+      }
+      else{
+        status = 'Logged Out'
+      }
+      
+      return (
+        <div>
+          <Header data={data} />
+          <h3>{status}</h3>
+        </div>
+      )
+    }
+  }
+
+  class LoginExt extends React.Component{
+    state = {
+      loggingIn: false,
+    }
+
+    handelLogin = () => {
+      this.setState({
+        loggingIn: !this.state.loggingIn,
+      }) 
+    }
+
+    render() {
+      return (
+        <div>
+          <button onClick={this.handelLogin}>
+            {this.state.loggingIn ? 'Logout' : 'Login'}
+          </button>
+          <Exp />
+        </div>
+      )
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Exp />
     </div>
-  );
+  )
 }
 
 export default App;
