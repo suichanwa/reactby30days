@@ -1,82 +1,14 @@
+import Condition from './Components/ConditionaRenderin';
+import ChangeBackground from './Components/TimeChange';
 import React from 'react';
-import ReactDom from 'react-dom';
 import './App.css';
 
 const App = () => {
-  class Header extends React.Component{
-    render() {
-      const {
-        name,
-        age,
-      } = this.props.data;
-
-      return (
-        <div>
-          <h1>{name}</h1>
-          <h2>{age}</h2>
-        </div>
-      )
-    }
-  }
-
-
-  class Exp extends React.Component{
-    state = {
-      isLoggingIn: true,
-    }
-
-    render() {
-      const data = {
-        name: 'John',
-        age: '25',
-      }
-
-      let status
-
-      if (this.state.isLoggedIn === true){
-        status = 'Logged In'
-      }
-      else{
-        status = 'Logged Out'
-      }
-      
-      return (
-        <div>
-          <Header data={data} />
-          <h3>{status}</h3>
-        </div>
-      )
-    }
-  }
-
-  class LoginExt extends React.Component{
-    state = {
-      loggingIn: false,
-    }
-
-    handelLogin = () => {
-      this.setState({
-        loggingIn: !this.state.loggingIn,
-      }) 
-    }
-
-    render() {
-      return (
-        <div>
-          <button onClick={this.handelLogin}>
-            {this.state.loggingIn ? 'Logout' : 'Login'}
-          </button>
-          <Exp />
-        </div>
-      )
-    }
-  }
-
   return (
-    <div>
-      <Exp />
+    <div className="App">
+      <Condition />
     </div>
-  )
+  );
 }
 
 export default App;
