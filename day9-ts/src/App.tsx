@@ -4,6 +4,7 @@ import MouseSome from './Components/MouseSome';
 import GetPeople from './Components/GetPeople';
 import MultipleInput from './Components/MultipleInput';
 import Validationation from './Components/Validations'; 
+import Subm from './Components/Submiting';
 import Form from './Components/Forms';
 import React from 'react';
 import './App.css';
@@ -11,7 +12,7 @@ import './App.css';
 const App = () => {
   return(
     <div>
-      <Validationation />
+      <Subm />
     </div>
   )
 }
