@@ -3,7 +3,6 @@ import './App.css';
 import { useState, useEffect } from "react";
 
 const App = () => {
-  //write fetch api with datas from https://api.thecatapi.com/v1/breeds
   const [catBreeds, setCatBreeds] = useState([]);
   const [catBreed, setCatBreed] = useState('');
   const [catImage, setCatImage] = useState('');
