@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment, useEffect, useState } from 'react';
+import Image from './Components/Imagess';
 import './App.css';
 
-function App() {
+
+const App = () => {
+   interface IImage {
+    id: number,
+    title: string,
+    url: string
+  }
+
+
+  const [images, setImages] = useState<IImage[]>([]);
+  useEffect(() => {
+    fetch('https://api.thecatapi.com/v1/images/search?breed_id=abys')
+      .then(res => res.json())
+      .then(json => setImages(json))
+      .catch(err => console.log(err));
+  }
+  , []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className="App">
+        <h1>Image Gallery</h1>
+        <div className="image-container">
+          {images.map(image => (
+            <Image key={image.id} image={image.url} alt={image.title} />
+          ))}
+        </div>
+      </div>
+    </Fragment>
   );
 }
+
 
 export default App;
